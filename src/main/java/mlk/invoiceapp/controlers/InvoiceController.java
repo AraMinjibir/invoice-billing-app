@@ -9,7 +9,6 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
@@ -25,31 +24,27 @@ public class InvoiceController {
     private final PdfGeneratorService pdfGeneratorService;
     private final EmailService emailService;
 
-    @PreAuthorize("hasAnyRole('ADMIN','FREELANCER')")
     @PostMapping
     public Invoice createInvoice(@RequestBody Invoice invoice) {
         return invoiceService.createInvoice(invoice);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','FREELANCER')")
+
     @GetMapping
     public List<Invoice> getAllInvoices() {
         return invoiceService.findAllInvoices();
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','FREELANCER')")
     @GetMapping("/{id}")
     public Optional<Invoice> getInvoiceById(@PathVariable Long id) {
         return invoiceService.findInvoiceById(id);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','FREELANCER')")
     @PutMapping("/{id}")
     public Invoice updateInvoice(@PathVariable Long id, @RequestBody Invoice invoice) {
         return invoiceService.updateInvoice(id, invoice);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','FREELANCER')")
     @DeleteMapping("/{id}")
     public void deleteInvoice(@PathVariable Long id) {
         invoiceService.deleteInvoice(id);

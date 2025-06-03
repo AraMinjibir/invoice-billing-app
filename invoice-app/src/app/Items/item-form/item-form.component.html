@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input pInputText formControlName="itemName" placeholder="Item Name" />
+  <input pInputText formControlName="description" placeholder="Description" />
+  <input pInputNumber formControlName="price" placeholder="Price" />
+  <input pInputNumber formControlName="quantity" placeholder="Quantity" />
+
+  <button pButton type="submit" label="Save" [disabled]="form.invalid"></button>
+</form>
+

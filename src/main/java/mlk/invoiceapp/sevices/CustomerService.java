@@ -35,7 +35,7 @@ public class CustomerService {
     @Transactional
     public Customer updateCustomer(Long id, Customer updatedCustomer){
         return customerRepository.findById(id).map(customer ->{
-            customer.setId(updatedCustomer.getId());
+
             customer.setName(updatedCustomer.getName());
             customer.setEmail(updatedCustomer.getEmail());
             customer.setPhone(updatedCustomer.getPhone());

@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-fluid">
+  <div class="p-field">
+    <label for="invoiceNumber">Invoice Number</label>
+    <input pInputText id="invoiceNumber" formControlName="invoiceNumber" />
+  </div>
+
+  <div class="p-field">
+    <label for="date">Date</label>
+    <p-calendar inputId="date" formControlName="date" dateFormat="yy-mm-dd" append="body"></p-calendar>
+  </div>
+
+  <div class="p-field">
+    <label for="totalAmount">Total Amount</label>
+    <p-inputNumber inputId="totalAmount" formControlName="totalAmount" mode="currency" currency="NGN"></p-inputNumber>
+  </div>
+
+  <button pButton label="Save" type="submit" [disabled]="form.invalid"></button>
+</form>

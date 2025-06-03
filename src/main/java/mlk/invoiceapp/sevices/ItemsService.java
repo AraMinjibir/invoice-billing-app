@@ -33,7 +33,6 @@ public class ItemsService {
     public Items updateItem(Long id,Items updatedItem) {
         return itemRepository.findById(id)
                 .map(item -> {
-                    item.setId(updatedItem.getId());
                     item.setPrice(updatedItem.getPrice());
                     item.setItemName(updatedItem.getItemName());
                     item.setDescription(updatedItem.getDescription());

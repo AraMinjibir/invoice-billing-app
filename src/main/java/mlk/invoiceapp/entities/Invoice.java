@@ -91,7 +91,7 @@ public class Invoice {
         this.amount = amount;
     }
 
-    public Invoice(Long id, String invoiceNumber, LocalDate date, Customer customer, List Items) {
+    public Invoice(Long id, String invoiceNumber, LocalDate date, Customer customer, List<Items> Items) {
         this.id = id;
         this. invoiceNumber = invoiceNumber;
         this.date = date;

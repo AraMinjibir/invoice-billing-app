@@ -1,0 +1,32 @@
+<p-toast></p-toast>
+
+<div class="p-m-3">
+  <button pButton label="Add Invoice" icon="pi pi-plus" (click)="openAdd()"></button>
+
+  <p-table [value]="invoices" class="p-mt-3" [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Invoice Number</th>
+        <th>Date</th>
+        <th>Total Amount</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-invoice>
+      <tr>
+        <td>{{ invoice.invoiceNumber }}</td>
+        <td>{{ invoice.date }}</td>
+        <td>₦{{ invoice.totalAmount }}</td>
+        <td>
+          <button pButton icon="pi pi-pencil" class="p-button-sm p-mr-2" (click)="edit(invoice)"></button>
+          <button pButton icon="pi pi-trash" class="p-button-danger p-button-sm" (click)="confirmDelete(invoice)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="displayDialog" [modal]="true" [header]="editMode ? 'Edit Invoice' : 'Add Invoice'" [style]="{width: '30vw'}">
+  <invoice-form [invoice]="selectedInvoice" (save)="saveInvoice($event)"></invoice-form>
+</p-dialog>
+<p-confirmDialog></p-confirmDialog>
